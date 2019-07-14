@@ -1,5 +1,11 @@
 # tpHoudiniLib
 
+<p align="left">
+    <a href="https://github.com/tpoveda/tpPyUtils/blob/master/LICENSE" alt="License">
+        <img src="https://img.shields.io/github/license/tpoveda/tpHoudiniLib.svg" /></a>
+</p>
+
+
 Houdini implementation for tpDccLib and tpQtLib packages.
 
 Also, this module contains a lot of utilities functions and classes to work with Houdini Python API (hou)
