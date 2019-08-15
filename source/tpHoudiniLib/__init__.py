@@ -58,5 +58,7 @@ def init(do_reload=False):
     global logger
     logger = tphoudini_importer.logger
 
-    tphoudini_importer.import_modules()
-    tphoudini_importer.import_packages(only_packages=True)
+    tphoudini_importer.import_modules(skip_modules=['tpHoudiniLib.core'])
+    tphoudini_importer.import_packages(only_packages=True, order=['tpHoudiniLib.core'])
+    if do_reload:
+        tphoudini_importer.reload_all()
