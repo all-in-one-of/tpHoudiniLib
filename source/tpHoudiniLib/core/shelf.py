@@ -62,7 +62,7 @@ class HoudiniShelf(abstract_shelf.AbstractShelf, object):
         """
 
         return gui.create_shelf_tool(
-            tool_name='solstice_{}'.format(label),
+            tool_name='{}_{}'.format(self.name, label),
             tool_label=label,
             tool_type=command_type,
             tool_script=command,
@@ -86,7 +86,7 @@ class HoudiniShelf(abstract_shelf.AbstractShelf, object):
 
         all_shelves = list()
         for cat in categories:
-            shelf_name = 'solstice_{}'.format(cat)
+            shelf_name = '{}_{}'.format(self.name, cat)
             if gui.shelf_exists(shelf_name=shelf_name):
                 gui.remove_shelf(name=shelf_name)
             if not gui.shelf_exists(shelf_name=shelf_name):
@@ -127,7 +127,7 @@ class HoudiniShelf(abstract_shelf.AbstractShelf, object):
                     new_tool = self.add_button(label=label, command=command, icon=icon, tooltip=annotation)
                     if new_tool:
                         all_tools.append(new_tool)
-                current_shelf = gui.get_shelf(shelf_name='solstice_{}'.format(item))
+                current_shelf = gui.get_shelf(shelf_name='{}_{}'.format(self.name, item))
                 if current_shelf and all_tools:
                     current_shelf.setTools(all_tools)
 
