@@ -56,6 +56,7 @@ By default, tpHoudiniLib logger only logs warning messages. To enable all log me
 you can set TPHOUDINILIB_DEV environment variables to 'True'
 
 .. code-block:: python
+
     import os
     
     os.environ['TPHOUDINILIB_DEV'] = 'True'
