@@ -18,7 +18,10 @@ def get_houdini_window():
     Return the Houdini Qt main window
     """
 
-    return hou.ui.mainQtWindow()
+    try:
+        return hou.qt.mainWindow()
+    except Exception:
+        return hou.ui.mainQtWindow()
 
 
 def get_shelf(shelf_name):

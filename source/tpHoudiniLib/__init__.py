@@ -47,18 +47,30 @@ class tpHoudiniLib(importer.Importer, object):
         return mod_dir
 
 
-def init(do_reload=False):
+def init_dcc(do_reload=False):
     """
     Initializes module
     :param do_reload: bool, Whether to reload modules or not
     """
 
-    tphoudini_importer = importer.init_importer(importer_class=tpHoudiniLib, do_reload=do_reload)
+    tphoudini_importer = importer.init_importer(importer_class=tpHoudiniLib, do_reload=False)
+
+    global logger
+    logger = tphoudini_importer.logger
+
+    tphoudini_importer.import_modules()
+    tphoudini_importer.import_packages(only_packages=True)
+    if do_reload:
+        tphoudini_importer.reload_all()
+
+
+def init_ui(do_reload=False):
+    tphoudini_importer = importer.init_importer(importer_class=tpHoudiniLib, do_reload=False)
 
     global logger
     logger = tphoudini_importer.logger
 
     tphoudini_importer.import_modules(skip_modules=['tpHoudiniLib.core'])
-    tphoudini_importer.import_packages(only_packages=True, order=['tpHoudiniLib.core'])
+    tphoudini_importer.import_packages(only_packages=True, skip_modules=['tpHoudiniLib.core'])
     if do_reload:
         tphoudini_importer.reload_all()
