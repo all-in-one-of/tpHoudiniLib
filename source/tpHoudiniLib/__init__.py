@@ -23,8 +23,8 @@ logger = None
 
 
 class tpHoudiniLib(importer.Importer, object):
-    def __init__(self):
-        super(tpHoudiniLib, self).__init__(module_name='tpHoudiniLib')
+    def __init__(self, *args, **kwargs):
+        super(tpHoudiniLib, self).__init__(module_name='tpHoudiniLib', *args, **kwargs)
 
     def get_module_path(self):
         """
